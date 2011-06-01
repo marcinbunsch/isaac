@@ -10,12 +10,13 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
   s.authors  = ["Harry Vangberg"]
   s.files    = [
-    "README.rdoc", 
+    "README.rdoc",
     "CHANGES",
-    "isaac.gemspec", 
+    "isaac.gemspec",
     "lib/isaac.rb",
     "lib/isaac/bot.rb"
   ]
+  s.add_dependency "eventmachine"
   s.rdoc_options = ["--main", "README.rdoc"]
   s.extra_rdoc_files = ["CHANGES", "README.rdoc"]
 end

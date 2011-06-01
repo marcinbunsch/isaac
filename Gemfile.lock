@@ -1,0 +1,22 @@
+PATH
+  remote: .
+  specs:
+    isaac (0.3.0)
+      eventmachine
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    contest (0.1.3)
+    eventmachine (0.12.10)
+    rake (0.8.7)
+    rr (1.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  contest
+  isaac!
+  rake (= 0.8.7)
+  rr
