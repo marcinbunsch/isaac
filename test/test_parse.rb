@@ -76,6 +76,7 @@ class TestParse < Test::Unit::TestCase
         raw user
         raw host
         raw message
+        raw params.inspect
       end
     }
     bot_is_connected
@@ -85,6 +86,7 @@ class TestParse < Test::Unit::TestCase
     assert_equal "john\r\n", @server.gets
     assert_equal "doe.com\r\n", @server.gets
     assert_equal "hello, you!\r\n", @server.gets
+    assert_equal "[\"isaac\", \"hello, you!\"]\r\n", @server.gets
   end
 
   test "channel event has environment" do
@@ -95,6 +97,7 @@ class TestParse < Test::Unit::TestCase
         raw host
         raw message
         raw channel
+        raw params.inspect
       end
     }
     bot_is_connected
@@ -105,6 +108,7 @@ class TestParse < Test::Unit::TestCase
     assert_equal "doe.com\r\n", @server.gets
     assert_equal "hello, folks!\r\n", @server.gets
     assert_equal "#awesome\r\n", @server.gets
+    assert_equal "[\"#awesome\", \"hello, folks!\"]\r\n", @server.gets
   end
 
   test "errors are caught and dispatched" do
@@ -118,7 +122,7 @@ class TestParse < Test::Unit::TestCase
     @server.print ":server 401 isaac jeff :No such nick/channel\r\n"; react!
     assert_equal "401\r\n", @server.gets
   end
-  
+
   test "prefix is optional for errors" do
     bot = mock_bot {
       on(:error, 401) {

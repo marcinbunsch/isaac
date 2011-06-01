@@ -79,10 +79,14 @@ module Isaac
       @message ||= ""
     end
 
+    def params
+      @params ||= []
+    end
+
     def dispatch(event, msg=nil)
       if msg
-        @nick, @user, @host, @channel, @error, @message = 
-          msg.nick, msg.user, msg.host, msg.channel, msg.error, msg.message
+        @nick, @user, @host, @channel, @error, @message, @params =
+          msg.nick, msg.user, msg.host, msg.channel, msg.error, msg.message, msg.params
       end
 
       if handler = find(event, message)
