@@ -162,6 +162,8 @@ module Isaac
           @queue.unlock
           @bot.dispatch(:connect)
         end
+      elsif msg.command == "353"
+        @bot.dispatch(:names, msg)
       elsif msg.command == "PRIVMSG"
         if msg.params.last == "\001VERSION\001"
           message "NOTICE #{msg.nick} :\001VERSION #{@bot.config.version}\001"
